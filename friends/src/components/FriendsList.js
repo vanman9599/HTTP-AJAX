@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
 
 function FriendsList(props) {
  
@@ -7,8 +7,9 @@ function FriendsList(props) {
     <div className="friends-list-wrapper">
       {props.friends.map(friend => (
           <div>
-          <p>{friend.name}</p>
-          <p>{friend.email}</p>
+              <h1>{friend.name}</h1>
+          <p>Email: {friend.email}<br />
+         Age: {friend.age}</p>
          </div>
       ))}
       </div>
