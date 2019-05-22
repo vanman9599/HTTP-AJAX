@@ -1,14 +1,32 @@
 import React from 'react';
-import FriendsList from 'friends-list';
+import ReactDOM from 'react-dom';
+import FriendsList from './components/FriendsList';
+import './styles.css';
+import axios from 'axios';
 
-import './App.css';
+class App extends React.Component {
+  
+  constructor() {
+    super();
+    this.state = {
+      friends: []
+    };
+  }
 
-function App() {
-  return (
-    <div className="App">
-      <FriendsList />
-    </div>
-  );
+  componentDidMount() {
+    
+    axios
+    .get('http://localhost:5000/friends')
+    .then(response => this.setState({ friends: response.data}))
+    .catch(err => console.log(err));
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <FriendsList friends={this.state.friends} />
+       </div>
+    );
+  }
 }
-
 export default App;

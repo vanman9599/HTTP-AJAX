@@ -1,3 +1,18 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import axios from 'axios';
+import { Link } from 'react-router-dom';
+
+function FriendsList(props) {
+ 
+  return (
+    <div className="friends-list-wrapper">
+      {props.friends.map(friend => (
+          <div>
+          <p>{friend.name}</p>
+          <p>{friend.email}</p>
+         </div>
+      ))}
+      </div>
+  );
+}
+
+export default FriendsList;
