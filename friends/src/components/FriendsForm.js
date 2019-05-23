@@ -22,15 +22,25 @@ handleSubmit = e => {
     });
 }
 
+changeHandler = e => {
+    e.persist();
+    this.setState(prevState => ({
+      friend: {
+        ...prevState.friend,
+        [e.target.name]: e.target.value
+      }
+    }));
+  };
+
 render(){
     return (
         <div className="friends-list-wrapper">
          
               <div>
-              <form onSubmit={this.handleSumbit}>
-                  <input type="text" placeholder="Name" name="name" />
-                  <input type="number" placeholder="Age" name="age"/>
-                  <input type="email" placeholder="Email" name="email"/>
+              <form onSubmit={this.handleSubmit}>
+                  <input type="text" placeholder="Name" name="name"  onChange={this.changeHandler} value={this.state.friend.name}/>
+                  <input type="number" placeholder="Age" name="age"  onChange={this.changeHandler} value={this.state.friend.age}/>
+                  <input type="email" placeholder="Email" name="email"  onChange={this.changeHandler} value={this.state.friend.email}/>
                   <button>Add a Friend</button>
               </form>
              </div>
